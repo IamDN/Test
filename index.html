@@ -24,11 +24,12 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/testAuth2.loader.js";
+      var loaderUrl = buildUrl + "/testAuth2.asm.loader.js";
       var config = {
         dataUrl: buildUrl + "/testAuth2.data.gz",
-        frameworkUrl: buildUrl + "/testAuth2.framework.js.gz",
-        codeUrl: buildUrl + "/testAuth2.wasm.gz",
+        frameworkUrl: buildUrl + "/testAuth2.asm.framework.js.gz",
+        codeUrl: buildUrl + "/testAuth2.asm.js.gz",
+        memoryUrl: buildUrl + "/testAuth2.asm.mem.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "UnityFirebaseAuth",
