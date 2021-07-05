@@ -21,7 +21,7 @@
              background: url('progress-bar-empty-dark.png') no-repeat center 
              }
         #unity-progress-bar-full { 
-        width: 0%px; 
+        width: 0%; 
         height: 18px; 
         margin-top:10px; 
         background: url('progress-bar-full-dark.png') no-repeat center
