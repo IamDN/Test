@@ -18,9 +18,9 @@
                 background-color: aliceblue;
             }
             .loader .progressbar {
-                background-color: steelblue;
-                border: 2px black solid;
-                border-radius: 10px;
+                background-color: grey;
+                border: 0px black solid;
+                border-radius: 0px;
                 position: absolute;
                 width: 50%;
                 height: 75px;
@@ -46,19 +46,19 @@
     
     <script src="Build/Test.asm.loader.js"></script>
     <script>
-   // Custom progressbar function
-   function customProgress(unityInstance, progress) {
+     // Custom progressbar function
+     function customProgress(unityInstance, progress) {
       // Change fill of the progress bar
-      const fill = document.getElementById("fill");
-      fill.style.width = progress * 100 + "%";
+          const fill = document.getElementById("fill");
+          fill.style.width = progress * 100 + "%";
 
-      // If loaded, remove loader
-      if (progress === 1) {
-         const loader = document.getElementById("loader");
-         loader.remove();
-      }
-   }
-</script>
+          // If loaded, remove loader
+           if (progress === 1) {
+           const loader = document.getElementById("loader");
+          loader.remove();
+           }
+     }
+    </script>
     <script>
         // Unity Initialization
         var myGameInstance = null;
@@ -71,7 +71,7 @@
         companyName: "DefaultCompany",
         productName: "UnityFirebaseAuth",
         productVersion: "0.1",
-      },{ onProgress: customProgress }).then((unityInstance) => {
+      }).then((unityInstance) => {
                   myGameInstance = unityInstance;
               }).catch((message) => {
                   alert(message);
