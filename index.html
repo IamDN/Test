@@ -14,13 +14,53 @@
               height: 100%;
               position: absolute;
             }
+            .loader {
+                background-color: aliceblue;
+            }
+            .loader .progressbar {
+                background-color: steelblue;
+                border: 2px black solid;
+                border-radius: 10px;
+                position: absolute;
+                width: 50%;
+                height: 75px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                }
+        .loader .fill {
+                background-color: skyblue;
+                border-radius: 10px;
+                height: 100%;
+        }
       </style>
     <title>Unity WebGL Player | UnityFirebaseAuth</title>
   </head>
   <body >
     <canvas id="unity-canvas" style="width:  100%; height: 100%; background: rgb(15, 31, 32)"></canvas>
+      <div id="loader" class="loader">
+         <div class="progressbar">
+            <div id="fill" class="fill" style="width: 0%;"></div>
+         </div>
+      </div>
+    
     <script src="Build/Test.asm.loader.js"></script>
     <script>
+   // Custom progressbar function
+   function customProgress(unityInstance, progress) {
+      // Change fill of the progress bar
+      const fill = document.getElementById("fill");
+      fill.style.width = progress * 100 + "%";
+
+      // If loaded, remove loader
+      if (progress === 1) {
+         const loader = document.getElementById("loader");
+         loader.remove();
+      }
+   }
+</script>
+    <script>
+        // Unity Initialization
         var myGameInstance = null;
         createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/Test.data",
@@ -31,7 +71,7 @@
         companyName: "DefaultCompany",
         productName: "UnityFirebaseAuth",
         productVersion: "0.1",
-      }).then((unityInstance) => {
+      },{ onProgress: customProgress }).then((unityInstance) => {
                   myGameInstance = unityInstance;
               }).catch((message) => {
                   alert(message);
