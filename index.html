@@ -33,7 +33,7 @@
         
          // Unity Initialization
         var myGameInstance = null;
-        createUnityInstance(canvas, canvas ,(progress) => {
+        createUnityInstance(canvas, config ,(progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
                   myGameInstance = unityInstance;
