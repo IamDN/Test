@@ -14,18 +14,18 @@
               position: absolute;
             }
         #unity-loading-bar  { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-        #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; color: red; }
-        #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px;color: blue; }
+        #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-dark.png') no-repeat center }
+        #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
       </style>
     <title>Unity WebGL Player | UnityFirebaseAuth</title>
   </head>
   <body >
     <canvas id="unity-canvas" style="width:  100%; height: 100%; background: rgb(15, 31, 32)"></canvas>
-     <div id="unity-loading-bar">
+          <div id="unity-loading-bar">
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
-    </div>
+       </div>
     <script src="Build/Test.asm.loader.js"></script>
 
     <script>
@@ -43,8 +43,8 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "UnityFirebaseAuth",
-        productVersion: "0.1",
-      } (progress) => {
+        productVersion: "0.1"
+      } ,(progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
                   myGameInstance = unityInstance;
