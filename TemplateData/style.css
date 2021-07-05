@@ -9,27 +9,28 @@
          }
         #unity-loading-bar  {
         	 position: absolute; 
-        	  left: 40%;
+        	  left: 30%;
         
 
         	  display: none
         	   }
         #unity-progress-bar-empty { 
-             width: 100px; 
+             width: 200px; 
              height: 350px; 
              margin-top: 0px; 
              background-color: grey;
                           }
         #unity-progress-bar-full { 
-        width:10px; 
-        height: 300px; 
+        width:8px; 
+        height: 50%; 
+        margin-left:92px; 
         margin-top:0px; 
          background-color: white;
          }
        #monkey { 
        position: absolute; 
-        width:100px; 
-        height: 100px; 
+        width:200px; 
+        height: 200px; 
         margin-top:0px; 
-        background: url('progress-bar-empty-dark.png') no-repeat center 
+        background: url('monkey.png') no-repeat center 
          }
