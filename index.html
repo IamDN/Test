@@ -3,82 +3,68 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | UnityFirebaseAuth</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <title>Modra 3D</title>
   </head>
-  <body >
-    <canvas id="unity-canvas" style="width:  100%; height: 100%; background: rgb(15, 31, 32)"></canvas>
-        
-          <div id="unity-loading-bar">
-                
-           <div id="unity-progress-bar-empty">
-            <div id="unity-progress-bar-full"></div>  
-            <div id="monkey"></div>
-            </div>
-
-       </div>
-    <script src="Build/Test.asm.loader.js"></script>
-
-    <!-- Loading of unity webGL TODO: Move to separate file-->
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">UnityFirebaseAuth</div>
+      </div>
+    </div>
     <script>
-        var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        var progressBarEmpty = document.querySelector("#unity-progress-bar-empty ");
-        var canvas = document.querySelector("#unity-canvas");
-        var monkey = document.querySelector("#monkey");
-        loadingBar.style.display = "block";
-        var config = {
-        dataUrl: "Build/Test.data",
-        frameworkUrl: "Build/Test.asm.framework.js",
-        codeUrl: "Build/Test.asm.js",
-        memoryUrl: "Build/Test.asm.mem",
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Test.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Test.data",
+        frameworkUrl: buildUrl + "/Test.framework.js",
+        codeUrl: buildUrl + "/Test.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "UnityFirebaseAuth",
-        productVersion: "0.1"
-        }
-        
-         // Unity Initialization
-        var myGameInstance = null;
-        createUnityInstance(canvas, config ,(progress) => {
-          Update(progress);
+        productVersion: "0.1",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-                  myGameInstance = unityInstance;
-                  loadingBar.style.display = "none";
-              }).catch((message) => {
-                  alert(message);
-       });
-       
-       function Update(value) {
-          let ori = progressBarEmpty.style.height;
-          progressBarFull.style.height = 100* value + "%";
- 
-       }
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
     </script>
- <!-- Do not display this script at the moment
-
-    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-functions.js"></script>
-
-
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
-
-
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
-
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
-    />
-
-
-    <script src="https://js.stripe.com/v3/"></script>
-
-
-    <script src="TempalteData/app.js"></script>
--->
   </body>
 </html>
