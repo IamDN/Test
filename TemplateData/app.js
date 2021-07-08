@@ -69,7 +69,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
  */
  function GetPremium(token) {
      currentUser = token;
-    document.querySelector("#unity-canvas").style.display = "block";
+    document.querySelector("#unity-canvas").style.display = "none";
     console.log("GetPrimiumActive");
     startDataListeners();
   }
@@ -78,6 +78,8 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
  * Data listeners
  */
 function startDataListeners() {
+    console.log("Start Data listener");
+   console.log("currentUser ": currentUser );
   // Get all our products and render them to the page
   const products = document.querySelector(".products");
   const template = document.querySelector("#product");
