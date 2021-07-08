@@ -67,7 +67,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
 /**
  * Unity implementation
  */
- function GetPremium(token) {
+ window.GetPremium = function (token) {
      currentUser = token;
     document.querySelector("#unity-canvas").style.display = "none";
     console.log("GetPrimiumActive");
