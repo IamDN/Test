@@ -79,7 +79,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
  */
 function startDataListeners() {
     console.log("Start Data listener");
-   console.log("currentUser ": currentUser );
+   console.log("currentUser ": + currentUser );
   // Get all our products and render them to the page
   const products = document.querySelector(".products");
   const template = document.querySelector("#product");
