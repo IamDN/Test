@@ -67,9 +67,9 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
 /**
  * Unity implementation
  */
- window.GetPremium = function (token) {
+ function ActivateStripe(token) {
      currentUser = token;
-    document.querySelector("#unity-canvas").style.display = "none";
+    document.querySelector("#unity-canvas").style.display = "block";
     console.log("GetPrimiumActive");
     startDataListeners();
   }
@@ -78,8 +78,6 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
  * Data listeners
  */
 function startDataListeners() {
-    console.log("Start Data listener");
-   console.log("currentUser ": + currentUser );
   // Get all our products and render them to the page
   const products = document.querySelector(".products");
   const template = document.querySelector("#product");

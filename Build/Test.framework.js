@@ -3237,9 +3237,10 @@ function _GetPremium(token, objectName, callback, fallback) {
  var parsedObjectName = Pointer_stringify(objectName);
  var parsedCallback = Pointer_stringify(callback);
  var parsedFallback = Pointer_stringify(fallback);
+ ActivateStripe(parsedToken);
  try {
   console.log("GetPremium with: " + parsedToken);
-  window.GetPremium(parsedToken);
+  ActivateStripe(parsedToken);
   myGameInstance.SendMessage(parsedObjectName, parsedCallback, "premium activated");
  } catch (error) {
   console.log("Get Premium Error");
