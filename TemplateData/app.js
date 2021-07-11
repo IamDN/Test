@@ -77,7 +77,8 @@ function startDataListeners() {
      currentUser = token;
     document.querySelector("#unity-canvas").style.display = "block";
     console.log("GetPrimiumActive");
-    startDataListeners();
+    SingIn();
+   //startDataListeners();
   }
  
 /**
