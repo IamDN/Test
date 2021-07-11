@@ -42,6 +42,7 @@ function SingIn() {
     .then((userCredential) => {
       // Signed in
       currentUser = userCredential.user.uid;
+      console.log("Yeah");
       startDataListeners();
     })
     .catch((error) => {
