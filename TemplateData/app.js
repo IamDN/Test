@@ -31,39 +31,44 @@ let currentUser;
 /**
  * Firebase Authentication configuration
  */
-const firebaseUI = new firebaseui.auth.AuthUI(firebase.auth());
-const firebaseUiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      return true;
-    },
-    uiShown: () => {
-      document.querySelector("#loader").style.display = "none";
-    }
-  },
-  signInFlow: "popup",
-  signInSuccessUrl: "/",
-  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
-  credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-  // Your terms of service url.
-  tosUrl: "https://example.com/terms",
-  // Your privacy policy url.
-  privacyPolicyUrl: "https://example.com/privacy"
-};
-firebase.auth().onAuthStateChanged((firebaseUser) => {
-  if (firebaseUser) {
-    document.querySelector("#loader").style.display = "none";
-    document.querySelector("main").style.display = "block";
-    currentUser = firebaseUser.uid;
-    startDataListeners();
-  } else {
-    document.querySelector("main").style.display = "none";
-    firebaseUI.start("#firebaseui-auth-container", firebaseUiConfig);
-  }
+document.addEventListener("DOMContentLoaded", function () {
+  SingIn();
 });
+
+function SingIn() {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword("test@test.com", "test123")
+    .then((userCredential) => {
+      // Signed in
+      currentUser = userCredential.user.uid;
+      startDataListeners();
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode + " / " + errorMessage);
+    });
+}
+
+function startDataListeners() {
+  // Get data for customers
+  var docRef = db.collection("customers").doc(currentUser);
+  docRef
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+}
+
 /**
  * Unity implementation
  */
@@ -77,7 +82,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
 /**
  * Data listeners
  */
-function startDataListeners() {
+function startDataListeners2() {
   // Get all our products and render them to the page
   const products = document.querySelector(".products");
   const template = document.querySelector("#product");
