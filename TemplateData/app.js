@@ -41,7 +41,7 @@ function SingIn() {
   console.log("singing");
   firebase
     .auth()
-    .signInWithEmailAndPassword("test@test.com", "test123")
+    .signInWithEmailAndPassword("test@test.com", "123456")
     .then((userCredential) => {
       // Signed in
       currentUser = userCredential.user.uid;
