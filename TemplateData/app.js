@@ -44,7 +44,7 @@ function SingIn() {
     .signInWithEmailAndPassword("test@test.com", "123456")
     .then((userCredential) => {
       // Signed in
-      currentUser = userCredential.user.uid;
+      currentUser = "HjDwYgK1bhSfBWacZ7918x7N0zd2";
       console.log("Yeah");
       startDataListeners();
     })
