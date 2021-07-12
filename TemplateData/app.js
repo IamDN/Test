@@ -32,11 +32,13 @@ let currentUser;
  * Firebase Authentication configuration
  */
 document.addEventListener("DOMContentLoaded", function () {
+  console.log(".........start...........");
   SingIn();
-  console.log("..... start...........");
+
 });
 
 function SingIn() {
+  console.log("singing");
   firebase
     .auth()
     .signInWithEmailAndPassword("test@test.com", "test123")
