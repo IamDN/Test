@@ -33,6 +33,7 @@ let currentUser;
  */
 document.addEventListener("DOMContentLoaded", function () {
   SingIn();
+  console.log("..... start...........");
 });
 
 function SingIn() {
