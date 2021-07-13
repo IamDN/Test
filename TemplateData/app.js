@@ -31,20 +31,20 @@ let currentUser;
 /**
  * Firebase Authentication configuration
  */
-document.addEventListener("DOMContentLoaded", function () {
-  console.log(".........start...........");
-  SingIn();
+//document.addEventListener("DOMContentLoaded", function () {
+//  console.log(".........start...........");
+//  SingIn();
 
-});
+//});
 
-function SingIn() {
+function SingIn(email, pw) {
   console.log("singing");
   firebase
     .auth()
-    .signInWithEmailAndPassword("test@test.com", "123456")
+    .signInWithEmailAndPassword(email,, pw)
     .then((userCredential) => {
       // Signed in
-      currentUser = "HjDwYgK1bhSfBWacZ7918x7N0zd2";
+      currentUser =  firebaseUser.uid;
       console.log("Yeah");
       startDataListeners();
     })
@@ -76,11 +76,11 @@ function startDataListeners() {
 /**
  * Unity implementation
  */
- function ActivateStripe(token) {
+ function ActivateStripe(email, pw) {
      currentUser = token;
     document.querySelector("#unity-canvas").style.display = "block";
     console.log("GetPrimiumActive");
-    SingIn();
+    SingIn(email, pw);
    //startDataListeners();
   }
  

@@ -3232,15 +3232,16 @@ Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
 STATICTOP += 16;
 assert(tempDoublePtr % 8 == 0);
-function _GetPremium(token, objectName, callback, fallback) {
- var parsedToken = Pointer_stringify(token);
+function _GetPremium(e, pw, objectName, callback, fallback) {
+ var parsedEmail = Pointer_stringify(e);
+ var parsedPW = Pointer_stringify(pw);
  var parsedObjectName = Pointer_stringify(objectName);
  var parsedCallback = Pointer_stringify(callback);
  var parsedFallback = Pointer_stringify(fallback);
  ActivateStripe(parsedToken);
  try {
   console.log("GetPremium with: " + parsedToken);
-  ActivateStripe(parsedToken);
+  ActivateStripe(parsedEmail, parsedPW);
   myGameInstance.SendMessage(parsedObjectName, parsedCallback, "premium activated");
  } catch (error) {
   console.log("Get Premium Error");
