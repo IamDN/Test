@@ -57,6 +57,7 @@ function SingIn(email, pw) {
 
 function startDataListeners() {
   // Get data for customers
+   console.log("Current User: " +currentUser );
   var docRef = db.collection("customers").doc(currentUser);
   docRef
     .get()
