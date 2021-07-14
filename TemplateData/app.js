@@ -77,10 +77,9 @@ function startDataListeners() {
  * Unity implementation
  */
  function ActivateStripe(email, pw) {
-     currentUser = token;
-    document.querySelector("#unity-canvas").style.display = "none";
-    console.log("GetPrimiumActive");
-    SingIn(email, pw);
+   // document.querySelector("#unity-canvas").style.display = "none";
+    console.log("Stripe Active");
+    //SingIn(email, pw);
    //startDataListeners();
   }
  
