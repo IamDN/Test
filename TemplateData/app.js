@@ -45,7 +45,8 @@ function SingIn(email, pw) {
     .then((userCredential) => {
       // Signed in
       currentUser =  userCredential.uid;
-      console.log("Yeah");
+      console.log("Yeah "  + userCredential.uid);
+       console.log("User UID "  +   firebase.auth().currentUser.uid);
       startDataListeners();
     })
     .catch((error) => {
