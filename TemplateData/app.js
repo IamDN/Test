@@ -78,7 +78,7 @@ function startDataListeners() {
  */
  function ActivateStripe(email, pw) {
      currentUser = token;
-    document.querySelector("#unity-canvas").style.display = "block";
+    document.querySelector("#unity-canvas").style.display = "none";
     console.log("GetPrimiumActive");
     SingIn(email, pw);
    //startDataListeners();
