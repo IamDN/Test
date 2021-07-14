@@ -38,7 +38,7 @@ let currentUser;
 //});
 
 function SingIn(email, pw) {
-  console.log("singing");
+  console.log("singing..." + email);
   firebase
     .auth()
     .signInWithEmailAndPassword(email, pw)
