@@ -77,10 +77,10 @@ function startDataListeners() {
  * Unity implementation
  */
  function ActivateStripe(email, pw) {
-   // document.querySelector("#unity-canvas").style.display = "none";
+    document.querySelector("#unity-canvas").style.display = "none";
     console.log("Stripe Active");
-    //SingIn(email, pw);
-   //startDataListeners();
+    SingIn(email, pw);
+   startDataListeners();
   }
  
 /**
