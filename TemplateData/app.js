@@ -44,7 +44,7 @@ function SingIn(email, pw) {
     .signInWithEmailAndPassword(email, pw)
     .then((userCredential) => {
       // Signed in
-      currentUser =  firebaseUser.uid;
+      currentUser =  userCredential.uid;
       console.log("Yeah");
       startDataListeners();
     })
